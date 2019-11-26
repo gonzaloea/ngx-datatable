@@ -1,5 +1,5 @@
 # ngx-datatable
-[![npm downloads](https://img.shields.io/npm/dm/@gonzaloea/ngx-datatable.svg)](https://npmjs.org/@swimlane/ngx-datatable)
+[![npm downloads](https://img.shields.io/npm/dm/@gonzaloea/ngx-datatable.svg)](https://npmjs.org/@gonzaloea/ngx-datatable)
 
 ## Fork with Angular 7 fixes:
     - Fixed row detail toggled on refresh rows.
@@ -31,9 +31,9 @@ See the [changelog](https://github.com/swimlane/ngx-datatable/blob/master/docs/c
 - Universal Support
 
 ## Installation
-To use ngx-datatable in your project install it via [npm](https://www.npmjs.com/package/@swimlane/ngx-datatable):
+To use ngx-datatable in your project install it via [npm](https://www.npmjs.com/package/@gonzaloea/ngx-datatable):
 ```
-npm i @swimlane/ngx-datatable --save
+npm i @gonzaloea/ngx-datatable --save
 ```
 
 ## Credits

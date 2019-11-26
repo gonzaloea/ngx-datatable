@@ -1,9 +1,9 @@
 # Installing
 
 You can grab the latest release from the [Releases Page](https://github.com/swimlane/ngx-datatable/releases) 
-in Github or via [NPM](https://www.npmjs.com/package/@swimlane/ngx-datatable).
+in Github or via [NPM](https://www.npmjs.com/package/@gonzaloea/ngx-datatable).
 
-* `npm install @swimlane/ngx-datatable`
+* `npm install @gonzaloea/ngx-datatable`
 
 <<<<<<< HEAD
 Also, the release code is checked in and resides [here](https://github.com/swimlane/ngx-datatable/tree/master/release).
