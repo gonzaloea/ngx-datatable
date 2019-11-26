@@ -8,7 +8,6 @@
  *
  */
 export class RowHeightCache {
-
   /**
    * Tree Array stores the cumulative information of the row heights to perform efficient
    * range queries and updates.  Currently the tree is initialized to the base row
@@ -49,31 +48,35 @@ export class RowHeightCache {
     const n = externalVirtual ? rowCount : rows.length;
     this.treeArray = new Array(n);
 
-    for(let i = 0; i < n; ++i) {
+    for (let i = 0; i < n; ++i) {
       this.treeArray[i] = 0;
     }
 
-    for(let i = 0; i < n; ++i) {
+    for (let i = 0; i < n; ++i) {
+      debugger;
       const row = rows[i];
       let currentRowHeight = rowHeight;
-      if(isFn) {
+      if (isFn) {
         currentRowHeight = rowHeight(row);
       }
 
       // Add the detail row height to the already expanded rows.
       // This is useful for the table that goes through a filter or sort.
-      const expanded = rowExpansions.get(row);
-      if(row && expanded === 1) {
-        if(isDetailFn) {
+      const expanded = rowExpansions.has(row);
+      if (row && expanded) {
+        if (isDetailFn) {
           const index = rowIndexes.get(row);
           currentRowHeight += detailRowHeight(row, index);
         } else {
+          console.log("Detail Row Height:  " + detailRowHeight);
           currentRowHeight += detailRowHeight;
         }
       }
 
       this.update(i, currentRowHeight);
     }
+
+    console.log("Tree Array: "+this.treeArray);
   }
 
   /**
@@ -81,7 +84,7 @@ export class RowHeightCache {
    * that is present in the current view port.  Below handles edge cases.
    */
   getRowIndex(scrollY: number): number {
-    if(scrollY === 0) return 0;
+    if (scrollY === 0) return 0;
     return this.calcRowIndex(scrollY);
   }
 
@@ -98,9 +101,9 @@ export class RowHeightCache {
     const n = this.treeArray.length;
     atRowIndex |= 0;
 
-    while(atRowIndex < n) {
+    while (atRowIndex < n) {
       this.treeArray[atRowIndex] += byRowHeight;
-      atRowIndex |= (atRowIndex + 1);
+      atRowIndex |= atRowIndex + 1;
     }
   }
 
@@ -115,7 +118,7 @@ export class RowHeightCache {
     let sum = 0;
     atIndex |= 0;
 
-    while(atIndex >= 0) {
+    while (atIndex >= 0) {
       sum += this.treeArray[atIndex];
       atIndex = (atIndex & (atIndex + 1)) - 1;
     }
@@ -135,7 +138,7 @@ export class RowHeightCache {
    * that is present in the current view port.
    */
   private calcRowIndex(sum: number): number {
-    if(!this.treeArray.length) return 0;
+    if (!this.treeArray.length) return 0;
 
     let pos = -1;
     const dataLength = this.treeArray.length;
@@ -144,6 +147,7 @@ export class RowHeightCache {
     const highestBit = Math.pow(2, dataLength.toString(2).length - 1);
 
     for (let blockSize = highestBit; blockSize !== 0; blockSize >>= 1) {
+      debugger;
       const nextPos = pos + blockSize;
       if (nextPos < dataLength && sum >= this.treeArray[nextPos]) {
         sum -= this.treeArray[nextPos];
@@ -153,5 +157,4 @@ export class RowHeightCache {
 
     return pos + 1;
   }
-
 }

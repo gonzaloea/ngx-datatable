@@ -5,10 +5,14 @@ in Github or via [NPM](https://www.npmjs.com/package/@swimlane/ngx-datatable).
 
 * `npm install @swimlane/ngx-datatable`
 
+<<<<<<< HEAD
 Also, the release code is checked in and resides [here](https://github.com/swimlane/ngx-datatable/tree/master/release).
 
 ### Module Version
 The module is packaged using UMD. The file is `release/index.js`.
+=======
+### CSS
+>>>>>>> 3372d63... Fix #1313 do not collapse row details when row updated (#1778)
 
 ### CSS
 If you want to use material theme, include `./release/material.css`. For more information, visit the 'Themes' section.

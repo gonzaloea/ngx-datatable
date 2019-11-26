@@ -48,6 +48,7 @@ var RowHeightCache = /** @class */ (function () {
             this.treeArray[i] = 0;
         }
         for (var i = 0; i < n; ++i) {
+            debugger;
             var row = rows[i];
             var currentRowHeight = rowHeight;
             if (isFn) {
@@ -55,18 +56,20 @@ var RowHeightCache = /** @class */ (function () {
             }
             // Add the detail row height to the already expanded rows.
             // This is useful for the table that goes through a filter or sort.
-            var expanded = rowExpansions.get(row);
-            if (row && expanded === 1) {
+            var expanded = rowExpansions.has(row);
+            if (row && expanded) {
                 if (isDetailFn) {
                     var index = rowIndexes.get(row);
                     currentRowHeight += detailRowHeight(row, index);
                 }
                 else {
+                    console.log("Detail Row Height:  " + detailRowHeight);
                     currentRowHeight += detailRowHeight;
                 }
             }
             this.update(i, currentRowHeight);
         }
+        console.log("Tree Array: " + this.treeArray);
     };
     /**
      * Given the ScrollY position i.e. sum, provide the rowIndex
@@ -89,7 +92,7 @@ var RowHeightCache = /** @class */ (function () {
         atRowIndex |= 0;
         while (atRowIndex < n) {
             this.treeArray[atRowIndex] += byRowHeight;
-            atRowIndex |= (atRowIndex + 1);
+            atRowIndex |= atRowIndex + 1;
         }
     };
     /**
@@ -125,6 +128,7 @@ var RowHeightCache = /** @class */ (function () {
         // Get the highest bit for the block size.
         var highestBit = Math.pow(2, dataLength.toString(2).length - 1);
         for (var blockSize = highestBit; blockSize !== 0; blockSize >>= 1) {
+            debugger;
             var nextPos = pos + blockSize;
             if (nextPos < dataLength && sum >= this.treeArray[nextPos]) {
                 sum -= this.treeArray[nextPos];

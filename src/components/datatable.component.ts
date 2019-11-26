@@ -394,8 +394,15 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    *
    * (`fn(x) === fn(y)` instead of `x === y`)
    */
-  @Input() rowIdentity: (x: any) => any = ((x: any) => x);
-
+  @Input() rowIdentity: (x: any) => any = (x: any) => {
+    if (this._groupRowsBy) {
+      // each group in groupedRows are stored as {key, value: [rows]},
+      // where key is the groupRowsBy index
+      return x.key;
+    } else {
+      return x;
+    }
+  };
   /**
    * Row specific classes.
    * Similar implementation to ngClass.
