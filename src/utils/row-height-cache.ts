@@ -53,7 +53,6 @@ export class RowHeightCache {
     }
 
     for (let i = 0; i < n; ++i) {
-      debugger;
       const row = rows[i];
       let currentRowHeight = rowHeight;
       if (isFn) {
@@ -147,7 +146,6 @@ export class RowHeightCache {
     const highestBit = Math.pow(2, dataLength.toString(2).length - 1);
 
     for (let blockSize = highestBit; blockSize !== 0; blockSize >>= 1) {
-      debugger;
       const nextPos = pos + blockSize;
       if (nextPos < dataLength && sum >= this.treeArray[nextPos]) {
         sum -= this.treeArray[nextPos];

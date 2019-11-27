@@ -1,5 +1,5 @@
 /**
- * angular2-data-table v"14.0.0" (https://github.com/swimlane/angular2-data-table)
+ * angular2-data-table v"14.0.1" (https://github.com/swimlane/angular2-data-table)
  * Copyright 2016
  * Licensed under MIT
  */
@@ -6991,7 +6991,6 @@ var RowHeightCache = /** @class */ (function () {
             this.treeArray[i] = 0;
         }
         for (var i = 0; i < n; ++i) {
-            debugger;
             var row = rows[i];
             var currentRowHeight = rowHeight;
             if (isFn) {
@@ -7071,7 +7070,6 @@ var RowHeightCache = /** @class */ (function () {
         // Get the highest bit for the block size.
         var highestBit = Math.pow(2, dataLength.toString(2).length - 1);
         for (var blockSize = highestBit; blockSize !== 0; blockSize >>= 1) {
-            debugger;
             var nextPos = pos + blockSize;
             if (nextPos < dataLength && sum >= this.treeArray[nextPos]) {
                 sum -= this.treeArray[nextPos];

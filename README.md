@@ -1,8 +1,8 @@
-# ngx-datatable
+# ngx-datatable - Angular 7 Fork
 [![npm downloads](https://img.shields.io/npm/dm/@gonzaloea/ngx-datatable.svg)](https://npmjs.org/@gonzaloea/ngx-datatable)
 
-## Fork with Angular 7 fixes:
-    - Fixed row detail toggled on refresh rows.
+## Integrated fixes from master:
+    - [#1778](https://github.com/swimlane/ngx-datatable/pull/1778) do not collapse row details when row updated
 
 
 `ngx-datatable` is an Angular component for presenting large and complex data.  It has all the features you would expect from any other table but in a light package with _no external dependencies_. The table was designed to be extremely flexible and light; it doesn't make any assumptions about your data or how you: filter, sort or page it.
