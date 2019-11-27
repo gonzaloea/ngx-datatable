@@ -67,7 +67,6 @@ export class RowHeightCache {
           const index = rowIndexes.get(row);
           currentRowHeight += detailRowHeight(row, index);
         } else {
-          console.log("Detail Row Height:  " + detailRowHeight);
           currentRowHeight += detailRowHeight;
         }
       }
@@ -75,7 +74,6 @@ export class RowHeightCache {
       this.update(i, currentRowHeight);
     }
 
-    console.log("Tree Array: "+this.treeArray);
   }
 
   /**
